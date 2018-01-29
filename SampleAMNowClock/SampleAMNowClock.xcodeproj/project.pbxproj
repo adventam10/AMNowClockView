@@ -7,45 +7,45 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0E9A083C20013B0C00DD65DB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9A083B20013B0C00DD65DB /* AppDelegate.swift */; };
-		0E9A083E20013B0C00DD65DB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9A083D20013B0C00DD65DB /* ViewController.swift */; };
+		0E4752C3201EDDC7002EA382 /* clock2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E4752B5201EDDC7002EA382 /* clock2@2x.png */; };
+		0E4752C4201EDDC7002EA382 /* clock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E4752B6201EDDC7002EA382 /* clock@2x.png */; };
+		0E4752C5201EDDC7002EA382 /* h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E4752B7201EDDC7002EA382 /* h@2x.png */; };
+		0E4752C6201EDDC7002EA382 /* hourhand2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E4752B8201EDDC7002EA382 /* hourhand2@2x.png */; };
+		0E4752C7201EDDC7002EA382 /* hourhand@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E4752B9201EDDC7002EA382 /* hourhand@2x.png */; };
+		0E4752C8201EDDC7002EA382 /* m@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E4752BA201EDDC7002EA382 /* m@2x.png */; };
+		0E4752C9201EDDC7002EA382 /* minutehand2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E4752BB201EDDC7002EA382 /* minutehand2@2x.png */; };
+		0E4752CA201EDDC7002EA382 /* minutehand@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E4752BC201EDDC7002EA382 /* minutehand@2x.png */; };
+		0E4752CB201EDDC7002EA382 /* s@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E4752BD201EDDC7002EA382 /* s@2x.png */; };
+		0E4752CC201EDDC7002EA382 /* secondhand2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E4752BE201EDDC7002EA382 /* secondhand2@2x.png */; };
+		0E4752CD201EDDC7002EA382 /* secondhand@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E4752BF201EDDC7002EA382 /* secondhand@2x.png */; };
+		0E4752CE201EDDC7002EA382 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4752C1201EDDC7002EA382 /* AppDelegate.swift */; };
+		0E4752CF201EDDC7002EA382 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4752C2201EDDC7002EA382 /* ViewController.swift */; };
+		0E4752D2201EDE08002EA382 /* AMNowClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4752D1201EDE08002EA382 /* AMNowClockView.swift */; };
 		0E9A084120013B0C00DD65DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E9A083F20013B0C00DD65DB /* Main.storyboard */; };
 		0E9A084320013B0C00DD65DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E9A084220013B0C00DD65DB /* Assets.xcassets */; };
 		0E9A084620013B0C00DD65DB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E9A084420013B0C00DD65DB /* LaunchScreen.storyboard */; };
-		0E9A085B20013B7700DD65DB /* AMNowClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9A084E20013B7700DD65DB /* AMNowClockView.swift */; };
-		0E9A085C20013B7700DD65DB /* clock2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E9A085020013B7700DD65DB /* clock2@2x.png */; };
-		0E9A085D20013B7700DD65DB /* clock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E9A085120013B7700DD65DB /* clock@2x.png */; };
-		0E9A085E20013B7700DD65DB /* h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E9A085220013B7700DD65DB /* h@2x.png */; };
-		0E9A085F20013B7700DD65DB /* hourhand2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E9A085320013B7700DD65DB /* hourhand2@2x.png */; };
-		0E9A086020013B7700DD65DB /* hourhand@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E9A085420013B7700DD65DB /* hourhand@2x.png */; };
-		0E9A086120013B7700DD65DB /* m@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E9A085520013B7700DD65DB /* m@2x.png */; };
-		0E9A086220013B7700DD65DB /* minutehand2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E9A085620013B7700DD65DB /* minutehand2@2x.png */; };
-		0E9A086320013B7700DD65DB /* minutehand@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E9A085720013B7700DD65DB /* minutehand@2x.png */; };
-		0E9A086420013B7700DD65DB /* s@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E9A085820013B7700DD65DB /* s@2x.png */; };
-		0E9A086520013B7700DD65DB /* secondhand2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E9A085920013B7700DD65DB /* secondhand2@2x.png */; };
-		0E9A086620013B7700DD65DB /* secondhand@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E9A085A20013B7700DD65DB /* secondhand@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0E4752B5201EDDC7002EA382 /* clock2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock2@2x.png"; sourceTree = "<group>"; };
+		0E4752B6201EDDC7002EA382 /* clock@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock@2x.png"; sourceTree = "<group>"; };
+		0E4752B7201EDDC7002EA382 /* h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "h@2x.png"; sourceTree = "<group>"; };
+		0E4752B8201EDDC7002EA382 /* hourhand2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hourhand2@2x.png"; sourceTree = "<group>"; };
+		0E4752B9201EDDC7002EA382 /* hourhand@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hourhand@2x.png"; sourceTree = "<group>"; };
+		0E4752BA201EDDC7002EA382 /* m@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "m@2x.png"; sourceTree = "<group>"; };
+		0E4752BB201EDDC7002EA382 /* minutehand2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "minutehand2@2x.png"; sourceTree = "<group>"; };
+		0E4752BC201EDDC7002EA382 /* minutehand@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "minutehand@2x.png"; sourceTree = "<group>"; };
+		0E4752BD201EDDC7002EA382 /* s@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "s@2x.png"; sourceTree = "<group>"; };
+		0E4752BE201EDDC7002EA382 /* secondhand2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "secondhand2@2x.png"; sourceTree = "<group>"; };
+		0E4752BF201EDDC7002EA382 /* secondhand@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "secondhand@2x.png"; sourceTree = "<group>"; };
+		0E4752C1201EDDC7002EA382 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		0E4752C2201EDDC7002EA382 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		0E4752D1201EDE08002EA382 /* AMNowClockView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AMNowClockView.swift; sourceTree = "<group>"; };
 		0E9A083820013B0C00DD65DB /* SampleAMNowClock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SampleAMNowClock.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		0E9A083B20013B0C00DD65DB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		0E9A083D20013B0C00DD65DB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		0E9A084020013B0C00DD65DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0E9A084220013B0C00DD65DB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0E9A084520013B0C00DD65DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0E9A084720013B0C00DD65DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0E9A084E20013B7700DD65DB /* AMNowClockView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AMNowClockView.swift; sourceTree = "<group>"; };
-		0E9A085020013B7700DD65DB /* clock2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock2@2x.png"; sourceTree = "<group>"; };
-		0E9A085120013B7700DD65DB /* clock@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock@2x.png"; sourceTree = "<group>"; };
-		0E9A085220013B7700DD65DB /* h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "h@2x.png"; sourceTree = "<group>"; };
-		0E9A085320013B7700DD65DB /* hourhand2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hourhand2@2x.png"; sourceTree = "<group>"; };
-		0E9A085420013B7700DD65DB /* hourhand@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hourhand@2x.png"; sourceTree = "<group>"; };
-		0E9A085520013B7700DD65DB /* m@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "m@2x.png"; sourceTree = "<group>"; };
-		0E9A085620013B7700DD65DB /* minutehand2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "minutehand2@2x.png"; sourceTree = "<group>"; };
-		0E9A085720013B7700DD65DB /* minutehand@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "minutehand@2x.png"; sourceTree = "<group>"; };
-		0E9A085820013B7700DD65DB /* s@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "s@2x.png"; sourceTree = "<group>"; };
-		0E9A085920013B7700DD65DB /* secondhand2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "secondhand2@2x.png"; sourceTree = "<group>"; };
-		0E9A085A20013B7700DD65DB /* secondhand@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "secondhand@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +59,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0E4752B4201EDDC7002EA382 /* image */ = {
+			isa = PBXGroup;
+			children = (
+				0E4752B5201EDDC7002EA382 /* clock2@2x.png */,
+				0E4752B6201EDDC7002EA382 /* clock@2x.png */,
+				0E4752B7201EDDC7002EA382 /* h@2x.png */,
+				0E4752B8201EDDC7002EA382 /* hourhand2@2x.png */,
+				0E4752B9201EDDC7002EA382 /* hourhand@2x.png */,
+				0E4752BA201EDDC7002EA382 /* m@2x.png */,
+				0E4752BB201EDDC7002EA382 /* minutehand2@2x.png */,
+				0E4752BC201EDDC7002EA382 /* minutehand@2x.png */,
+				0E4752BD201EDDC7002EA382 /* s@2x.png */,
+				0E4752BE201EDDC7002EA382 /* secondhand2@2x.png */,
+				0E4752BF201EDDC7002EA382 /* secondhand@2x.png */,
+			);
+			path = image;
+			sourceTree = "<group>";
+		};
+		0E4752C0201EDDC7002EA382 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				0E4752D0201EDE08002EA382 /* AMNowClock */,
+				0E4752C1201EDDC7002EA382 /* AppDelegate.swift */,
+				0E4752C2201EDDC7002EA382 /* ViewController.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		0E4752D0201EDE08002EA382 /* AMNowClock */ = {
+			isa = PBXGroup;
+			children = (
+				0E4752D1201EDE08002EA382 /* AMNowClockView.swift */,
+			);
+			name = AMNowClock;
+			path = ../../../AMNowClock;
+			sourceTree = "<group>";
+		};
 		0E9A082F20013B0C00DD65DB = {
 			isa = PBXGroup;
 			children = (
@@ -78,42 +115,14 @@
 		0E9A083A20013B0C00DD65DB /* SampleAMNowClock */ = {
 			isa = PBXGroup;
 			children = (
-				0E9A084D20013B7700DD65DB /* AMNowClockView */,
-				0E9A083B20013B0C00DD65DB /* AppDelegate.swift */,
-				0E9A083D20013B0C00DD65DB /* ViewController.swift */,
+				0E4752C0201EDDC7002EA382 /* Classes */,
+				0E4752B4201EDDC7002EA382 /* image */,
 				0E9A083F20013B0C00DD65DB /* Main.storyboard */,
 				0E9A084220013B0C00DD65DB /* Assets.xcassets */,
 				0E9A084420013B0C00DD65DB /* LaunchScreen.storyboard */,
 				0E9A084720013B0C00DD65DB /* Info.plist */,
 			);
 			path = SampleAMNowClock;
-			sourceTree = "<group>";
-		};
-		0E9A084D20013B7700DD65DB /* AMNowClockView */ = {
-			isa = PBXGroup;
-			children = (
-				0E9A084E20013B7700DD65DB /* AMNowClockView.swift */,
-				0E9A084F20013B7700DD65DB /* image */,
-			);
-			path = AMNowClockView;
-			sourceTree = "<group>";
-		};
-		0E9A084F20013B7700DD65DB /* image */ = {
-			isa = PBXGroup;
-			children = (
-				0E9A085020013B7700DD65DB /* clock2@2x.png */,
-				0E9A085120013B7700DD65DB /* clock@2x.png */,
-				0E9A085220013B7700DD65DB /* h@2x.png */,
-				0E9A085320013B7700DD65DB /* hourhand2@2x.png */,
-				0E9A085420013B7700DD65DB /* hourhand@2x.png */,
-				0E9A085520013B7700DD65DB /* m@2x.png */,
-				0E9A085620013B7700DD65DB /* minutehand2@2x.png */,
-				0E9A085720013B7700DD65DB /* minutehand@2x.png */,
-				0E9A085820013B7700DD65DB /* s@2x.png */,
-				0E9A085920013B7700DD65DB /* secondhand2@2x.png */,
-				0E9A085A20013B7700DD65DB /* secondhand@2x.png */,
-			);
-			path = image;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -175,20 +184,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0E9A085D20013B7700DD65DB /* clock@2x.png in Resources */,
-				0E9A085F20013B7700DD65DB /* hourhand2@2x.png in Resources */,
-				0E9A086520013B7700DD65DB /* secondhand2@2x.png in Resources */,
-				0E9A086120013B7700DD65DB /* m@2x.png in Resources */,
-				0E9A085C20013B7700DD65DB /* clock2@2x.png in Resources */,
+				0E4752C4201EDDC7002EA382 /* clock@2x.png in Resources */,
+				0E4752C6201EDDC7002EA382 /* hourhand2@2x.png in Resources */,
+				0E4752CC201EDDC7002EA382 /* secondhand2@2x.png in Resources */,
+				0E4752C8201EDDC7002EA382 /* m@2x.png in Resources */,
+				0E4752C3201EDDC7002EA382 /* clock2@2x.png in Resources */,
 				0E9A084620013B0C00DD65DB /* LaunchScreen.storyboard in Resources */,
 				0E9A084320013B0C00DD65DB /* Assets.xcassets in Resources */,
-				0E9A086220013B7700DD65DB /* minutehand2@2x.png in Resources */,
-				0E9A086320013B7700DD65DB /* minutehand@2x.png in Resources */,
-				0E9A086420013B7700DD65DB /* s@2x.png in Resources */,
-				0E9A086020013B7700DD65DB /* hourhand@2x.png in Resources */,
+				0E4752C9201EDDC7002EA382 /* minutehand2@2x.png in Resources */,
+				0E4752CA201EDDC7002EA382 /* minutehand@2x.png in Resources */,
+				0E4752CB201EDDC7002EA382 /* s@2x.png in Resources */,
+				0E4752C7201EDDC7002EA382 /* hourhand@2x.png in Resources */,
 				0E9A084120013B0C00DD65DB /* Main.storyboard in Resources */,
-				0E9A085E20013B7700DD65DB /* h@2x.png in Resources */,
-				0E9A086620013B7700DD65DB /* secondhand@2x.png in Resources */,
+				0E4752C5201EDDC7002EA382 /* h@2x.png in Resources */,
+				0E4752CD201EDDC7002EA382 /* secondhand@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -199,9 +208,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0E9A083E20013B0C00DD65DB /* ViewController.swift in Sources */,
-				0E9A085B20013B7700DD65DB /* AMNowClockView.swift in Sources */,
-				0E9A083C20013B0C00DD65DB /* AppDelegate.swift in Sources */,
+				0E4752CF201EDDC7002EA382 /* ViewController.swift in Sources */,
+				0E4752D2201EDE08002EA382 /* AMNowClockView.swift in Sources */,
+				0E4752CE201EDDC7002EA382 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

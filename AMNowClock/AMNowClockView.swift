@@ -1,6 +1,6 @@
 //
 //  AMNowClockView.swift
-//  TestProject
+//  AMNowClockView, https://github.com/adventam10/AMNowClockView
 //
 //  Created by am10 on 2017/12/29.
 //  Copyright © 2017年 am10. All rights reserved.
@@ -8,14 +8,13 @@
 
 import UIKit
 
-enum AMNCDateFormat:String {
+public enum AMNCDateFormat:String {
     case hour = "HH"
     case minute = "mm"
     case time = "HH:mm"
 }
 
-/// 時刻編集タイプ
-enum AMNCClockType {
+public enum AMNCClockType {
     case none
     case arabic
     case roman
@@ -28,14 +27,46 @@ enum AMNCClockType {
             return ["12", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"]
         case .roman:
             return []
-            //            return ["Ⅻ", "Ⅰ", "Ⅱ", "Ⅲ", "Ⅳ", "Ⅴ", "Ⅵ", "Ⅶ", "Ⅷ", "Ⅸ", "Ⅹ", "Ⅺ"]
+//            return ["Ⅻ", "Ⅰ", "Ⅱ", "Ⅲ", "Ⅳ", "Ⅴ", "Ⅵ", "Ⅶ", "Ⅷ", "Ⅸ", "Ⅹ", "Ⅺ"]
         }
     }
 }
 
-@IBDesignable class AMNowClockView: UIView {
+@IBDesignable public class AMNowClockView: UIView {
     
-    override var bounds: CGRect {
+    private let noonAngle:Float = Float(Double.pi/2 + Double.pi)
+    
+    private let clockSpace:CGFloat = 10
+    
+    private let clockView = UIView()
+    
+    private let clockImageView = UIImageView()
+    
+    private let minuteHandImageView = UIImageView()
+    
+    private let hourHandImageView = UIImageView()
+    
+    private let secondHandImageView = UIImageView()
+    
+    private var drawLayer:CAShapeLayer?
+    
+    private var hourHandLayer:CAShapeLayer?
+    
+    private var minuteHandLayer:CAShapeLayer?
+    
+    private var secondHandLayer:CAShapeLayer?
+    
+    private let selectedTimeLabel = UILabel()
+    
+    private let dateFormatter = DateFormatter()
+    
+    private let calendar = Calendar(identifier: .gregorian)
+    
+    private var currentDate:Date? = Date()
+    
+    private var timer:Timer?
+    
+    override public var bounds: CGRect {
         
         didSet {
             
@@ -44,114 +75,47 @@ enum AMNCClockType {
         }
     }
     
-    /// 12時の角度
-    private let noonAngle:Float = Float(Double.pi/2 + Double.pi)
+    public var clockType = AMNCClockType.arabic
     
-    /// 時計の上下左右の余白
-    private let clockSpace:CGFloat = 10
+    @IBInspectable public var clockBorderLineWidth:CGFloat = 5.0
     
-    /// 時計のせるView
-    private let clockView = UIView()
+    @IBInspectable public var smallClockIndexWidth:CGFloat = 1.0
     
-    /// 時計用ImageView
-    private let clockImageView = UIImageView()
+    @IBInspectable public var clockIndexWidth:CGFloat = 2.0
     
-    /// 長針用ImageView
-    private let minuteHandImageView = UIImageView()
+    @IBInspectable public var hourHandWidth:CGFloat = 3.5
     
-    /// 短針用ImageView
-    private let hourHandImageView = UIImageView()
+    @IBInspectable public var minuteHandWidth:CGFloat = 3.0
     
-    /// 秒針用ImageView
-    private let secondHandImageView = UIImageView()
+    @IBInspectable public var secondHandWidth:CGFloat = 1.5
     
-    /// 時計描画用レイヤ（ここに色々なレイヤをのせる）
-    private var drawLayer:CAShapeLayer?
+    @IBInspectable public var clockBorderLineColor:UIColor = UIColor.black
     
-    /// 短針レイヤ
-    private var hourHandLayer:CAShapeLayer?
+    @IBInspectable public var hourHandColor:UIColor = UIColor.black
     
-    /// 長針レイヤ
-    private var minuteHandLayer:CAShapeLayer?
+    @IBInspectable public var minuteHandColor:UIColor = UIColor.black
     
-    /// 秒針レイヤ
-    private var secondHandLayer:CAShapeLayer?
+    @IBInspectable public var secondHandColor:UIColor = UIColor.black
     
-    /// 時刻表示用ラベル
-    private let selectedTimeLabel = UILabel()
+    @IBInspectable public var selectedTimeLabelTextColor:UIColor = UIColor.black
     
-    /// 時間取得用フォーマット
-    private let dateFormatter = DateFormatter()
+    @IBInspectable public var timeLabelTextColor:UIColor = UIColor.black
     
-    /// カレンダー（時刻設定用）
-    private let calendar = Calendar(identifier: .gregorian)
+    @IBInspectable public var smallClockIndexColor:UIColor = UIColor.black
     
-    private var currentDate:Date? = Date()
+    @IBInspectable public var clockIndexColor:UIColor = UIColor.black
     
-    private var timer:Timer?
+    @IBInspectable public var clockColor:UIColor = UIColor.clear
     
-    /// 時計の文字盤の表示形式
-    var clockType = AMNCClockType.arabic
+    @IBInspectable public var clockImage:UIImage?
     
-    /// 時計の枠線の幅
-    @IBInspectable var clockBorderLineWidth:CGFloat = 5.0
+    @IBInspectable public var minuteHandImage:UIImage?
     
-    /// 時計の短目盛りの太さ
-    @IBInspectable var smallClockIndexWidth:CGFloat = 1.0
+    @IBInspectable public var hourHandImage:UIImage?
     
-    /// 時計の長目盛りの太さ
-    @IBInspectable var clockIndexWidth:CGFloat = 2.0
+    @IBInspectable public var secondHandImage:UIImage?
     
-    /// 短針の太さ
-    @IBInspectable var hourHandWidth:CGFloat = 3.5
-    
-    /// 長針の太さ
-    @IBInspectable var minuteHandWidth:CGFloat = 3.0
-    
-    /// 秒針の太さ
-    @IBInspectable var secondHandWidth:CGFloat = 1.5
-    
-    /// 時計の枠線の色
-    @IBInspectable var clockBorderLineColor:UIColor = UIColor.black
-    
-    /// 短針の色
-    @IBInspectable var hourHandColor:UIColor = UIColor.black
-    
-    /// 長針の色
-    @IBInspectable var minuteHandColor:UIColor = UIColor.black
-    
-    /// 秒針の色
-    @IBInspectable var secondHandColor:UIColor = UIColor.black
-    
-    /// 選択時間の文字色
-    @IBInspectable var selectedTimeLabelTextColor:UIColor = UIColor.black
-    
-    /// 時計の時間の文字色
-    @IBInspectable var timeLabelTextColor:UIColor = UIColor.black
-    
-    /// 時計の短目盛りの色
-    @IBInspectable var smallClockIndexColor:UIColor = UIColor.black
-    
-    /// 時計の長目盛りの色
-    @IBInspectable var clockIndexColor:UIColor = UIColor.black
-    
-    /// 時計の色
-    @IBInspectable var clockColor:UIColor = UIColor.clear
-    
-    /// 時計用Image
-    @IBInspectable var clockImage:UIImage?
-    
-    /// 長針用Image
-    @IBInspectable var minuteHandImage:UIImage?
-    
-    /// 短針用Image
-    @IBInspectable var hourHandImage:UIImage?
-    
-    /// 秒針用Image
-    @IBInspectable var secondHandImage:UIImage?
-    
-    /// 選択時刻表示フラグ
-    @IBInspectable var isShowSelectedTime:Bool = false {
+    @IBInspectable public var isShowSelectedTime:Bool = false {
         
         didSet {
             
@@ -160,7 +124,7 @@ enum AMNCClockType {
     }
     
     //MARK:Initialize
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         
         super.init(coder:aDecoder)
         initView()
@@ -188,7 +152,7 @@ enum AMNCClockType {
                                      repeats: true)
     }
     
-    override func draw(_ rect: CGRect) {
+    override public func draw(_ rect: CGRect) {
         
         relodClock()
         drawClock()
@@ -669,7 +633,7 @@ enum AMNCClockType {
         drawLayer = nil
     }
     
-    func relodClock() {
+    public func relodClock() {
         
         clear()
         
