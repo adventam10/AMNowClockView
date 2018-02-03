@@ -18,6 +18,13 @@ view.addSubview(clockView)
 
 ## Installation
 
+### CocoaPods
+
+Add this to your Podfile.
+```ogdl
+pod 'AMNowClockView'
+```
+
 ### Carthage
 
 Add this to your Cartfile.
