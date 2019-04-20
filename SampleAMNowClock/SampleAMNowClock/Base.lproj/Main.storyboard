@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -78,7 +77,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ns7-y0-aBr" customClass="AMNowClockView" customModule="SampleAMNowClock" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="278" width="110" height="110"/>
+                                <rect key="frame" x="0.0" y="278.5" width="110" height="110"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="110" id="juK-r3-f81"/>
@@ -90,7 +89,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TmY-XS-39P" customClass="AMNowClockView" customModule="SampleAMNowClock" customModuleProvider="target">
-                                <rect key="frame" x="265" y="278" width="110" height="110"/>
+                                <rect key="frame" x="265" y="278.5" width="110" height="110"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="110" id="aWT-dk-gsx"/>
@@ -143,6 +142,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="cView1" destination="NXo-wn-tWH" id="rYX-Wc-41z"/>
+                        <outlet property="cView2" destination="22G-b1-VJz" id="vdo-OD-v2X"/>
+                        <outlet property="cView3" destination="Kl0-7z-p8R" id="IGd-iP-Ah5"/>
+                        <outlet property="cView4" destination="ns7-y0-aBr" id="Qke-Ra-eXF"/>
+                        <outlet property="cView5" destination="TmY-XS-39P" id="WYx-xw-Q8E"/>
+                        <outlet property="cView6" destination="tIt-AV-vve" id="93V-fd-DVr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

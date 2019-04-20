@@ -16,6 +16,12 @@ let clockView = AMNowClockView(frame: view.bounds)
 view.addSubview(clockView)
 ```
 
+Set time zone(from ver.2.1)
+
+```swift
+clockView.timeZone = TimeZone(identifier: "GMT")
+```
+
 ## Installation
 
 ### CocoaPods

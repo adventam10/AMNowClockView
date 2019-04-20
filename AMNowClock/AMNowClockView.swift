@@ -59,7 +59,7 @@ public enum AMNCClockType {
     
     private let dateFormatter = DateFormatter()
     
-    private let calendar = Calendar(identifier: .gregorian)
+    private var calendar = Calendar(identifier: .gregorian)
     
     private var currentDate:Date? = Date()
     
@@ -115,6 +115,16 @@ public enum AMNCClockType {
     @IBInspectable public var isShowSelectedTime:Bool = false {
         didSet {
             selectedTimeLabel.isHidden = !isShowSelectedTime
+        }
+    }
+    
+    public var timeZone:TimeZone? {
+        didSet {
+            if let timeZone = timeZone {
+                calendar.timeZone = timeZone
+            } else {
+                calendar.timeZone = TimeZone.current
+            }
         }
     }
     
