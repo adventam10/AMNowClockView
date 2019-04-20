@@ -226,7 +226,7 @@ public enum AMNCClockType {
         let smallRadius:CGFloat = radius - (radius/20 + clockBorderLineWidth)
         
         let path = UIBezierPath()
-        // 中心から外への線描画
+        // draw line (from center to out)
         for i in 0..<60 {
             if i%5 != 0 {
                 let point = CGPoint(x: centerPoint.x + radius * CGFloat(cosf(angle)),
@@ -260,7 +260,7 @@ public enum AMNCClockType {
         let smallRadius:CGFloat = radius - (radius/10 + clockBorderLineWidth)
         
         let path = UIBezierPath()
-        // 中心から外への線描画
+        // draw line (from center to out)
         for _ in 0..<12 {
             let point = CGPoint(x: centerPoint.x + radius * CGFloat(cosf(angle)),
                                 y: centerPoint.y + radius * CGFloat(sinf(angle)))
@@ -282,7 +282,7 @@ public enum AMNCClockType {
         let length:CGFloat = radius/4
         smallRadius -= length/2
         
-        // 中心から外への線描画
+        // draw line (from center to out)
         for i in 0..<12 {
             let label = UILabel(frame: CGRect(x: 0,
                                               y: 0,
