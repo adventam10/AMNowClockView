@@ -58,6 +58,9 @@ public enum AMNCClockType {
         }
     }
     public var clockType: AMNCClockType = .arabic
+    /// Time zone
+    ///
+    /// default is TimeZone.current
     public var timeZone: TimeZone? {
         didSet {
             if let timeZone = timeZone {
