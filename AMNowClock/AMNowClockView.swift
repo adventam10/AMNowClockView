@@ -93,10 +93,25 @@ public enum AMNCClockType {
     private var minuteHandLayer:CAShapeLayer?
     private var secondHandLayer:CAShapeLayer?
     private var calendar = Calendar(identifier: .gregorian)
-    private var currentDate:Date? = Date()
-    private var timer:Timer?
+    private var currentDate: Date? = Date()
+    private var timer: Timer?
+    private var radius: CGFloat {
+        return clockView.frame.width/2
+    }
+    private var clockCenter: CGPoint {
+        return CGPoint(x: radius, y: radius)
+    }
+    private var hourHandLength: CGFloat {
+        return radius * 0.6
+    }
+    private var minuteHandLength: CGFloat {
+        return radius * 0.8
+    }
+    private var secondHandLength: CGFloat {
+        return radius * 0.8
+    }
     
-    //MARK:- Initialize
+    // MARK:- Initialize
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder:aDecoder)
         initView()
@@ -126,7 +141,7 @@ public enum AMNCClockType {
         drawClock()
     }
     
-    //MARK:- Prepare
+    // MARK: - Prepare View
     private func prepareClockView() {
         var length: CGFloat = (frame.width < frame.height) ? frame.width : frame.height
         length -= clockSpace*2
@@ -155,12 +170,9 @@ public enum AMNCClockType {
     }
     
     private func prepareSelectedTimeLabel() {
-        let radius: CGFloat = clockView.frame.width/2
-        let centerPoint = CGPoint(x: radius, y: radius)
-        selectedTimeLabel.frame = CGRect(x: centerPoint.x - (radius/2)/2,
-                                         y: centerPoint.y - radius/3,
-                                         width: radius/2,
-                                         height: radius/3)
+        selectedTimeLabel.frame = CGRect(x: clockCenter.x - (radius/2)/2,
+                                         y: clockCenter.y - radius/3,
+                                         width: radius/2, height: radius/3)
         clockView.addSubview(selectedTimeLabel)
         selectedTimeLabel.font = adjustFont(rect: selectedTimeLabel.frame)
         selectedTimeLabel.adjustsFontSizeToFitWidth = true
@@ -169,106 +181,15 @@ public enum AMNCClockType {
         selectedTimeLabel.isHidden = !isShowSelectedTime
     }
     
-    private func prepareDrawLayer() {
-        drawLayer = CAShapeLayer()
-        guard let drawLayer = drawLayer else {
-            return;
-        }
-        
-        drawLayer.frame = clockView.bounds
-        clockView.layer.addSublayer(drawLayer)
-        drawLayer.cornerRadius = clockView.frame.width/2
-        drawLayer.masksToBounds = true
-        
-        if clockImage == nil {
-            drawLayer.borderWidth = clockBorderLineWidth
-            drawLayer.borderColor = clockBorderLineColor.cgColor
-            drawLayer.backgroundColor = clockColor.cgColor
-        }
-    }
-    
-    private func prepareSmallClockIndexLayer() {
-        guard let drawLayer = drawLayer else {
-            return;
-        }
-        
-        let layer = CAShapeLayer()
-        layer.frame = drawLayer.bounds
-        drawLayer.addSublayer(layer)
-        layer.strokeColor = clockIndexColor.cgColor
-        layer.fillColor = UIColor.clear.cgColor;
-        
-        var angle: Float = noonAngle
-        let radius: CGFloat = clockView.frame.width/2
-        let centerPoint = CGPoint(x: radius, y: radius)
-        let smallRadius: CGFloat = radius - (radius/20 + clockBorderLineWidth)
-        
-        let path = UIBezierPath()
-        // draw line (from center to out)
-        for i in 0..<60 {
-            if i%5 != 0 {
-                let point = CGPoint(x: centerPoint.x + radius * CGFloat(cosf(angle)),
-                                    y: centerPoint.y + radius * CGFloat(sinf(angle)))
-                path.move(to: point)
-                let point2 = CGPoint(x: centerPoint.x + smallRadius * CGFloat(cosf(angle)),
-                                     y: centerPoint.y + smallRadius * CGFloat(sinf(angle)))
-                path.addLine(to: point2)
-            }
-            
-            angle += Float(Double.pi/30)
-        }
-        layer.lineWidth = smallClockIndexWidth
-        layer.path = path.cgPath
-    }
-    
-    private func prepareClockIndexLayer() {
-        guard let drawLayer = drawLayer else {
-            return;
-        }
-        
-        let layer = CAShapeLayer()
-        layer.frame = drawLayer.bounds
-        drawLayer.addSublayer(layer)
-        layer.strokeColor = clockIndexColor.cgColor
-        layer.fillColor = UIColor.clear.cgColor;
-        
-        var angle: Float = noonAngle
-        let radius: CGFloat = clockView.frame.width/2
-        let centerPoint = CGPoint(x: radius, y: radius)
-        let smallRadius: CGFloat = radius - (radius/10 + clockBorderLineWidth)
-        
-        let path = UIBezierPath()
-        // draw line (from center to out)
-        for _ in 0..<12 {
-            let point = CGPoint(x: centerPoint.x + radius * CGFloat(cosf(angle)),
-                                y: centerPoint.y + radius * CGFloat(sinf(angle)))
-            path.move(to: point)
-            let point2 = CGPoint(x: centerPoint.x + smallRadius * CGFloat(cosf(angle)),
-                                 y: centerPoint.y + smallRadius * CGFloat(sinf(angle)))
-            path.addLine(to: point2)
-            angle += Float(Double.pi/6)
-        }
-        layer.lineWidth = clockIndexWidth
-        layer.path = path.cgPath
-    }
-    
     private func prepareTimeLabel() {
         var angle: Float = noonAngle
-        let radius: CGFloat = clockView.frame.width/2
-        let centerPoint = CGPoint(x: radius, y: radius)
         var smallRadius: CGFloat = radius - (radius/10 + clockBorderLineWidth)
         let length: CGFloat = radius/4
         smallRadius -= length/2
         
         // draw line (from center to out)
         for i in 0..<12 {
-            let label = UILabel(frame: CGRect(x: 0,
-                                              y: 0,
-                                              width: length,
-                                              height: length))
-            label.adjustsFontSizeToFitWidth = true
-            label.textAlignment = .center;
-            label.textColor = timeLabelTextColor
+            let label = makeTimeLabel(length: length)
             switch clockType {
             case .none:
                 label.text = ""
@@ -279,98 +200,132 @@ public enum AMNCClockType {
             }
             label.font = adjustFont(rect: label.frame)
             clockView.addSubview(label)
-            let point = CGPoint(x: centerPoint.x + smallRadius * CGFloat(cosf(angle)),
-                                y: centerPoint.y + smallRadius * CGFloat(sinf(angle)))
+            let point = CGPoint(x: clockCenter.x + smallRadius * CGFloat(cosf(angle)),
+                                y: clockCenter.y + smallRadius * CGFloat(sinf(angle)))
             label.center = point
             angle += Float(Double.pi/6)
         }
     }
     
-    private func prepareHourHandLayer() {
-        hourHandLayer = CAShapeLayer()
-        guard let hourHandLayer = hourHandLayer,
-            let drawLayer = drawLayer else {
-            return
-        }
+    private func makeTimeLabel(length: CGFloat) -> UILabel {
+        let label = UILabel(frame: CGRect(x: 0, y: 0, width: length, height: length))
+        label.adjustsFontSizeToFitWidth = true
+        label.textAlignment = .center
+        label.textColor = timeLabelTextColor
+        return label
+    }
+    
+    // MARK: - Make Layer
+    private func makeDrawLayer() -> CAShapeLayer {
+        let drawLayer = CAShapeLayer()
+        drawLayer.frame = clockView.bounds
+        drawLayer.cornerRadius = radius
+        drawLayer.masksToBounds = true
         
-        hourHandLayer.frame = drawLayer.bounds
-        drawLayer.addSublayer(hourHandLayer)
+        if clockImage == nil {
+            drawLayer.borderWidth = clockBorderLineWidth
+            drawLayer.borderColor = clockBorderLineColor.cgColor
+            drawLayer.backgroundColor = clockColor.cgColor
+        }
+        return drawLayer
+    }
+    
+    private func makeSmallClockIndexLayer() -> CAShapeLayer {
+        let layer = CAShapeLayer()
+        layer.frame = drawLayer!.bounds
+        layer.strokeColor = clockIndexColor.cgColor
+        layer.fillColor = UIColor.clear.cgColor;
+        
+        var angle: Float = noonAngle
+        let smallRadius: CGFloat = radius - (radius/20 + clockBorderLineWidth)
+        
+        let path = UIBezierPath()
+        // draw line (from center to out)
+        for i in 0..<60 {
+            if i%5 != 0 {
+                let point = CGPoint(x: clockCenter.x + radius * CGFloat(cosf(angle)),
+                                    y: clockCenter.y + radius * CGFloat(sinf(angle)))
+                path.move(to: point)
+                let point2 = CGPoint(x: clockCenter.x + smallRadius * CGFloat(cosf(angle)),
+                                     y: clockCenter.y + smallRadius * CGFloat(sinf(angle)))
+                path.addLine(to: point2)
+            }
+            
+            angle += Float(Double.pi/30)
+        }
+        layer.lineWidth = smallClockIndexWidth
+        layer.path = path.cgPath
+        return layer
+    }
+    
+    private func makeClockIndexLayer() -> CAShapeLayer {
+        let layer = CAShapeLayer()
+        layer.frame = drawLayer!.bounds
+        layer.strokeColor = clockIndexColor.cgColor
+        layer.fillColor = UIColor.clear.cgColor;
+        
+        var angle: Float = noonAngle
+        let smallRadius: CGFloat = radius - (radius/10 + clockBorderLineWidth)
+        
+        let path = UIBezierPath()
+        // draw line (from center to out)
+        for _ in 0..<12 {
+            let point = CGPoint(x: clockCenter.x + radius * CGFloat(cosf(angle)),
+                                y: clockCenter.y + radius * CGFloat(sinf(angle)))
+            path.move(to: point)
+            let point2 = CGPoint(x: clockCenter.x + smallRadius * CGFloat(cosf(angle)),
+                                 y: clockCenter.y + smallRadius * CGFloat(sinf(angle)))
+            path.addLine(to: point2)
+            angle += Float(Double.pi/6)
+        }
+        layer.lineWidth = clockIndexWidth
+        layer.path = path.cgPath
+        return layer
+    }
+    
+    private func makeHourHandLayer() -> CAShapeLayer {
+        let hourHandLayer = CAShapeLayer()
+        hourHandLayer.frame = drawLayer!.bounds
         hourHandLayer.strokeColor = hourHandColor.cgColor
         hourHandLayer.fillColor = UIColor.clear.cgColor
-        
-        let angle: Float = noonAngle
-        
-        let radius: CGFloat = clockView.frame.width/2
-        let length: CGFloat = radius * 0.6
-        let centerPoint = CGPoint(x: radius, y: radius)
-        
-        let path = UIBezierPath()
-        let point = CGPoint(x: centerPoint.x + length * CGFloat(cosf(angle)),
-                            y: centerPoint.y + length * CGFloat(sinf(angle)))
-        path.move(to: centerPoint)
-        path.addLine(to: point)
-        
         hourHandLayer.lineWidth = hourHandWidth
-        hourHandLayer.path = path.cgPath
+        hourHandLayer.path = makeHandPath(length: hourHandLength,
+                                          angle: noonAngle).cgPath
+        return hourHandLayer
     }
     
-    private func prepareMinuteHandLayer() {
-        minuteHandLayer = CAShapeLayer()
-        guard let minuteHandLayer = minuteHandLayer,
-            let drawLayer = drawLayer else {
-            return
-        }
-        
-        minuteHandLayer.frame = drawLayer.bounds
-        drawLayer.addSublayer(minuteHandLayer)
+    private func makeMinuteHandLayer() -> CAShapeLayer {
+        let minuteHandLayer = CAShapeLayer()
+        minuteHandLayer.frame = drawLayer!.bounds
         minuteHandLayer.strokeColor = minuteHandColor.cgColor
         minuteHandLayer.fillColor = UIColor.clear.cgColor
-        
-        let angle: Float = noonAngle
-        
-        let radius: CGFloat = clockView.frame.width/2
-        let length: CGFloat = radius * 0.8
-        let centerPoint = CGPoint(x: radius, y: radius)
-        
-        let path = UIBezierPath()
-        let point = CGPoint(x: centerPoint.x + length * CGFloat(cosf(angle)),
-                            y: centerPoint.y + length * CGFloat(sinf(angle)))
-        path.move(to: centerPoint)
-        path.addLine(to: point)
-        
         minuteHandLayer.lineWidth = minuteHandWidth
-        minuteHandLayer.path = path.cgPath
+        minuteHandLayer.path = makeHandPath(length: minuteHandLength,
+                                            angle: noonAngle).cgPath
+        return minuteHandLayer
     }
     
-    private func prepareSecondHandLayer() {
-        secondHandLayer = CAShapeLayer()
-        guard let secondHandLayer = secondHandLayer,
-            let drawLayer = drawLayer else {
-            return
-        }
-        
-        secondHandLayer.frame = drawLayer.bounds
-        drawLayer.addSublayer(secondHandLayer)
+    private func makeSecondHandLayer() -> CAShapeLayer {
+        let secondHandLayer = CAShapeLayer()
+        secondHandLayer.frame = drawLayer!.bounds
         secondHandLayer.strokeColor = secondHandColor.cgColor
         secondHandLayer.fillColor = UIColor.clear.cgColor
-        
-        let angle: Float = noonAngle
-        
-        let radius: CGFloat = clockView.frame.width/2
-        let length: CGFloat = radius * 0.8
-        let centerPoint = CGPoint(x: radius, y: radius)
-        
-        let path = UIBezierPath()
-        let point = CGPoint(x: centerPoint.x + length * CGFloat(cosf(angle)),
-                            y: centerPoint.y + length * CGFloat(sinf(angle)))
-        path.move(to: centerPoint)
-        path.addLine(to: point)
-        
         secondHandLayer.lineWidth = secondHandWidth
-        secondHandLayer.path = path.cgPath
+        secondHandLayer.path = makeHandPath(length: secondHandLength,
+                                            angle: noonAngle).cgPath
+        return secondHandLayer
     }
     
-    //MARK: Calculate
+    private func makeHandPath(length: CGFloat, angle: Float) -> UIBezierPath {
+        let path = UIBezierPath()
+        let point = CGPoint(x: clockCenter.x + length * CGFloat(cosf(angle)),
+                            y: clockCenter.y + length * CGFloat(sinf(angle)))
+        path.move(to: clockCenter)
+        path.addLine(to: point)
+        return path
+    }
+    
+    // MARK:- Calculate
     private func calculateAngle(second: Int) -> Float {
         let angle: Float = Float((2*Double.pi)/60) * Float(second)
         return  angle + noonAngle
@@ -417,7 +372,7 @@ public enum AMNCClockType {
         return components
     }
     
-    //MARK: Draw Hand
+    // MARK:- Draw Hand
     private func drawSecondHandLayer(angle: Float) {
         if secondHandImage != nil {
             let rotation = angle - noonAngle
@@ -428,20 +383,9 @@ public enum AMNCClockType {
         guard let secondHandLayer = secondHandLayer else {
             return
         }
-        
-        let radius: CGFloat = clockView.frame.width/2
-        let length: CGFloat = radius * 0.8
-        let centerPoint = CGPoint(x: radius, y: radius)
-        
-        let path = UIBezierPath()
-        let point = CGPoint(x: centerPoint.x + length * CGFloat(cosf(angle)),
-                            y: centerPoint.y + length * CGFloat(sinf(angle)))
-        path.move(to: centerPoint)
-        path.addLine(to: point)
-        
         CATransaction.begin()
         CATransaction.setValue(kCFBooleanTrue, forKey: kCATransactionDisableActions)
-        secondHandLayer.path = path.cgPath
+        secondHandLayer.path = makeHandPath(length: secondHandLength, angle: angle).cgPath
         CATransaction.commit()
     }
     
@@ -455,20 +399,9 @@ public enum AMNCClockType {
         guard let minuteHandLayer = minuteHandLayer else {
             return
         }
-        
-        let radius: CGFloat = clockView.frame.width/2
-        let length: CGFloat = radius * 0.8
-        let centerPoint = CGPoint(x: radius, y: radius)
-        
-        let path = UIBezierPath()
-        let point = CGPoint(x: centerPoint.x + length * CGFloat(cosf(angle)),
-                            y: centerPoint.y + length * CGFloat(sinf(angle)))
-        path.move(to: centerPoint)
-        path.addLine(to: point)
-        
         CATransaction.begin()
         CATransaction.setValue(kCFBooleanTrue, forKey: kCATransactionDisableActions)
-        minuteHandLayer.path = path.cgPath
+        minuteHandLayer.path = makeHandPath(length: minuteHandLength, angle: angle).cgPath
         CATransaction.commit()
     }
     
@@ -486,20 +419,9 @@ public enum AMNCClockType {
         guard let hourHandLayer = hourHandLayer else {
             return
         }
-        
-        let radius: CGFloat = clockView.frame.width/2
-        let length: CGFloat = radius * 0.6
-        let centerPoint = CGPoint(x: radius, y: radius)
-        
-        let path = UIBezierPath()
-        let point = CGPoint(x: centerPoint.x + length * CGFloat(cosf(angle)),
-                            y: centerPoint.y + length * CGFloat(sinf(angle)))
-        path.move(to: centerPoint)
-        path.addLine(to: point)
-        
         CATransaction.begin()
         CATransaction.setValue(kCFBooleanTrue, forKey: kCATransactionDisableActions)
-        hourHandLayer.path = path.cgPath
+        hourHandLayer.path = makeHandPath(length: hourHandLength, angle: angle).cgPath
         CATransaction.commit()
     }
     
@@ -518,12 +440,12 @@ public enum AMNCClockType {
         selectedTimeLabel.text = dateFormatter.string(from: currentDate)
     }
     
-    //MARK:- Timer Action
+    // MARK:- Timer Action
     @objc func timerAction(teimer: Timer) {
         drawClock()
     }
     
-    //MARK:- Shwo/Clear
+    // MARK:- Shwo/Clear
     private func clear() {
         clockView.subviews.forEach { $0.removeFromSuperview() }
         
@@ -550,24 +472,28 @@ public enum AMNCClockType {
         prepareClockView()
         prepareClockImageViews()
         
-        prepareDrawLayer()
+        drawLayer = makeDrawLayer()
+        clockView.layer.addSublayer(drawLayer!)
         
         if clockImage == nil {
-            prepareSmallClockIndexLayer()
-            prepareClockIndexLayer()
+            drawLayer!.addSublayer(makeSmallClockIndexLayer())
+            drawLayer!.addSublayer(makeClockIndexLayer())
             prepareTimeLabel()
         }
         
         if hourHandImage == nil {
-            prepareHourHandLayer()
+            hourHandLayer = makeHourHandLayer()
+            drawLayer!.addSublayer(hourHandLayer!)
         }
         
         if minuteHandImage == nil {
-            prepareMinuteHandLayer()
+            minuteHandLayer = makeMinuteHandLayer()
+            drawLayer!.addSublayer(minuteHandLayer!)
         }
         
         if secondHandImage == nil {
-            prepareSecondHandLayer()
+            secondHandLayer = makeSecondHandLayer()
+            drawLayer!.addSublayer(secondHandLayer!)
         }
         
         prepareSelectedTimeLabel()
