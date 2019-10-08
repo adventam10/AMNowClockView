@@ -8,26 +8,96 @@
 
 import UIKit
 
-public enum AMNCDateFormat: String {
-    case hour = "HH"
-    case minute = "mm"
-    case time = "HH:mm"
-}
-
 public enum AMNCClockType {
     case none
     case arabic
-    case roman
-    func timeLabelTitleList() -> [String] {
+   
+    var times: [String] {
         switch self {
         case .none:
             return []
         case .arabic:
             return ["12", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"]
-        case .roman:
-            return []
-//            return ["Ⅻ", "Ⅰ", "Ⅱ", "Ⅲ", "Ⅳ", "Ⅴ", "Ⅵ", "Ⅶ", "Ⅷ", "Ⅸ", "Ⅹ", "Ⅺ"]
         }
+    }
+    
+    func time(index: Int) -> String {
+        switch self {
+        case .none:
+            return ""
+        case .arabic:
+            return times[index]
+        }
+    }
+}
+
+private class AMNowClockModel {
+    
+    enum AMNCDateFormat: String {
+        case hour = "HH"
+        case minute = "mm"
+        case time = "HH:mm"
+    }
+    
+    let noonAngle = Float(Double.pi/2 + Double.pi)
+    var calendar = Calendar(identifier: .gregorian)
+    var currentDate = Date()
+    var timer: Timer?
+    private let dateFormatter: DateFormatter = {
+        var df = DateFormatter()
+        df.locale = Locale(identifier: "ja_JP")
+        return df
+    }()
+    
+    func formattedTime(_ format: AMNCDateFormat) -> String {
+        dateFormatter.dateFormat = format.rawValue
+        return dateFormatter.string(from: currentDate)
+    }
+    
+    // MARK:- Calculate
+    func calculateAngle(second: Int) -> Float {
+        let angle: Float = Float((2*Double.pi)/60) * Float(second)
+        return  angle + noonAngle
+    }
+    
+    func calculateAngle(minute: Int) -> Float {
+        let angle: Float = Float((2*Double.pi)/60) * Float(minute)
+        return  angle + noonAngle
+    }
+    
+    func calculateAngle(hour:Int) -> Float {
+        var hourInt = hour
+        if hourInt > 12 {
+            hourInt -= 12
+        }
+        
+        let angle: Float = Float((2*Double.pi)/12) * Float(hourInt)
+        return  angle + noonAngle
+    }
+    
+    func compensationHourAngle() -> Float {
+        let components = getComponents(date: currentDate)
+        var hourAngle: Float = calculateAngle(hour: components.hour!)
+        hourAngle += (Float(components.minute!)/60.0) * Float((2*Double.pi)/12)
+        return hourAngle
+    }
+    
+    func compensationMinuteAngle() -> Float {
+        let components = getComponents(date: currentDate)
+        var minuteAngle: Float = calculateAngle(minute: components.minute!)
+        minuteAngle += (Float(components.second!)/60.0) * Float((2*Double.pi)/60)
+        return minuteAngle
+    }
+    
+    func adjustFont(rect: CGRect) -> UIFont {
+        let length = (rect.width > rect.height) ? rect.height : rect.width
+        return .systemFont(ofSize: length * 0.8)
+    }
+    
+    func getComponents(date: Date) -> DateComponents {
+        let components = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second],
+                                                 from: date)
+        return components
     }
 }
 
@@ -64,9 +134,9 @@ public enum AMNCClockType {
     public var timeZone: TimeZone? {
         didSet {
             if let timeZone = timeZone {
-                calendar.timeZone = timeZone
+                model.calendar.timeZone = timeZone
             } else {
-                calendar.timeZone = TimeZone.current
+                model.calendar.timeZone = TimeZone.current
             }
         }
     }
@@ -78,7 +148,7 @@ public enum AMNCClockType {
         }
     }
     
-    private let noonAngle: Float = Float(Double.pi/2 + Double.pi)
+    private let model = AMNowClockModel()
     private let clockSpace: CGFloat = 10
     private let clockView = UIView()
     private let clockImageView = UIImageView()
@@ -86,15 +156,11 @@ public enum AMNCClockType {
     private let hourHandImageView = UIImageView()
     private let secondHandImageView = UIImageView()
     private let selectedTimeLabel = UILabel()
-    private let dateFormatter = DateFormatter()
     
-    private var drawLayer:CAShapeLayer?
-    private var hourHandLayer:CAShapeLayer?
-    private var minuteHandLayer:CAShapeLayer?
-    private var secondHandLayer:CAShapeLayer?
-    private var calendar = Calendar(identifier: .gregorian)
-    private var currentDate: Date? = Date()
-    private var timer: Timer?
+    private var drawLayer: CAShapeLayer?
+    private var hourHandLayer: CAShapeLayer?
+    private var minuteHandLayer: CAShapeLayer?
+    private var secondHandLayer: CAShapeLayer?
     private var radius: CGFloat {
         return clockView.frame.width/2
     }
@@ -114,26 +180,15 @@ public enum AMNCClockType {
     // MARK:- Initialize
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder:aDecoder)
-        initView()
     }
     
     override public init(frame: CGRect) {
         super.init(frame: frame)
-        backgroundColor = UIColor.clear
-        initView()
+        backgroundColor = .clear
     }
     
     convenience init() {
-        self.init(frame: CGRect.zero)
-    }
-    
-    private func initView() {
-        dateFormatter.locale = Locale(identifier: "ja_JP")
-        timer = Timer.scheduledTimer(timeInterval: 0.5,
-                                     target: self,
-                                     selector: #selector(self.timerAction(teimer:)),
-                                     userInfo: nil,
-                                     repeats: true)
+        self.init(frame: .zero)
     }
     
     override public func draw(_ rect: CGRect) {
@@ -174,7 +229,7 @@ public enum AMNCClockType {
                                          y: clockCenter.y - radius/3,
                                          width: radius/2, height: radius/3)
         clockView.addSubview(selectedTimeLabel)
-        selectedTimeLabel.font = adjustFont(rect: selectedTimeLabel.frame)
+        selectedTimeLabel.font = model.adjustFont(rect: selectedTimeLabel.frame)
         selectedTimeLabel.adjustsFontSizeToFitWidth = true
         selectedTimeLabel.textColor = selectedTimeLabelTextColor
         selectedTimeLabel.textAlignment = .center
@@ -182,7 +237,7 @@ public enum AMNCClockType {
     }
     
     private func prepareTimeLabel() {
-        var angle: Float = noonAngle
+        var angle = model.noonAngle
         var smallRadius: CGFloat = radius - (radius/10 + clockBorderLineWidth)
         let length: CGFloat = radius/4
         smallRadius -= length/2
@@ -190,15 +245,8 @@ public enum AMNCClockType {
         // draw line (from center to out)
         for i in 0..<12 {
             let label = makeTimeLabel(length: length)
-            switch clockType {
-            case .none:
-                label.text = ""
-            case .arabic:
-               label.text = clockType.timeLabelTitleList()[i]
-            case .roman:
-               label.text = ""
-            }
-            label.font = adjustFont(rect: label.frame)
+            label.text = clockType.time(index: i)
+            label.font = model.adjustFont(rect: label.frame)
             clockView.addSubview(label)
             let point = CGPoint(x: clockCenter.x + smallRadius * CGFloat(cosf(angle)),
                                 y: clockCenter.y + smallRadius * CGFloat(sinf(angle)))
@@ -236,19 +284,19 @@ public enum AMNCClockType {
         layer.strokeColor = clockIndexColor.cgColor
         layer.fillColor = UIColor.clear.cgColor;
         
-        var angle: Float = noonAngle
+        var angle = model.noonAngle
         let smallRadius: CGFloat = radius - (radius/20 + clockBorderLineWidth)
         
         let path = UIBezierPath()
         // draw line (from center to out)
         for i in 0..<60 {
             if i%5 != 0 {
-                let point = CGPoint(x: clockCenter.x + radius * CGFloat(cosf(angle)),
+                let start = CGPoint(x: clockCenter.x + radius * CGFloat(cosf(angle)),
                                     y: clockCenter.y + radius * CGFloat(sinf(angle)))
-                path.move(to: point)
-                let point2 = CGPoint(x: clockCenter.x + smallRadius * CGFloat(cosf(angle)),
-                                     y: clockCenter.y + smallRadius * CGFloat(sinf(angle)))
-                path.addLine(to: point2)
+                path.move(to: start)
+                let end = CGPoint(x: clockCenter.x + smallRadius * CGFloat(cosf(angle)),
+                                  y: clockCenter.y + smallRadius * CGFloat(sinf(angle)))
+                path.addLine(to: end)
             }
             
             angle += Float(Double.pi/30)
@@ -264,18 +312,18 @@ public enum AMNCClockType {
         layer.strokeColor = clockIndexColor.cgColor
         layer.fillColor = UIColor.clear.cgColor;
         
-        var angle: Float = noonAngle
+        var angle = model.noonAngle
         let smallRadius: CGFloat = radius - (radius/10 + clockBorderLineWidth)
         
         let path = UIBezierPath()
         // draw line (from center to out)
         for _ in 0..<12 {
-            let point = CGPoint(x: clockCenter.x + radius * CGFloat(cosf(angle)),
+            let start = CGPoint(x: clockCenter.x + radius * CGFloat(cosf(angle)),
                                 y: clockCenter.y + radius * CGFloat(sinf(angle)))
-            path.move(to: point)
-            let point2 = CGPoint(x: clockCenter.x + smallRadius * CGFloat(cosf(angle)),
-                                 y: clockCenter.y + smallRadius * CGFloat(sinf(angle)))
-            path.addLine(to: point2)
+            path.move(to: start)
+            let end = CGPoint(x: clockCenter.x + smallRadius * CGFloat(cosf(angle)),
+                              y: clockCenter.y + smallRadius * CGFloat(sinf(angle)))
+            path.addLine(to: end)
             angle += Float(Double.pi/6)
         }
         layer.lineWidth = clockIndexWidth
@@ -290,7 +338,7 @@ public enum AMNCClockType {
         hourHandLayer.fillColor = UIColor.clear.cgColor
         hourHandLayer.lineWidth = hourHandWidth
         hourHandLayer.path = makeHandPath(length: hourHandLength,
-                                          angle: noonAngle).cgPath
+                                          angle: model.noonAngle).cgPath
         return hourHandLayer
     }
     
@@ -301,7 +349,7 @@ public enum AMNCClockType {
         minuteHandLayer.fillColor = UIColor.clear.cgColor
         minuteHandLayer.lineWidth = minuteHandWidth
         minuteHandLayer.path = makeHandPath(length: minuteHandLength,
-                                            angle: noonAngle).cgPath
+                                            angle: model.noonAngle).cgPath
         return minuteHandLayer
     }
     
@@ -312,7 +360,7 @@ public enum AMNCClockType {
         secondHandLayer.fillColor = UIColor.clear.cgColor
         secondHandLayer.lineWidth = secondHandWidth
         secondHandLayer.path = makeHandPath(length: secondHandLength,
-                                            angle: noonAngle).cgPath
+                                            angle: model.noonAngle).cgPath
         return secondHandLayer
     }
     
@@ -325,57 +373,10 @@ public enum AMNCClockType {
         return path
     }
     
-    // MARK:- Calculate
-    private func calculateAngle(second: Int) -> Float {
-        let angle: Float = Float((2*Double.pi)/60) * Float(second)
-        return  angle + noonAngle
-    }
-    
-    private func calculateAngle(minute: Int) -> Float {
-        let angle: Float = Float((2*Double.pi)/60) * Float(minute)
-        return  angle + noonAngle
-    }
-    
-    private func calculateAngle(hour:Int) -> Float {
-        var hourInt = hour
-        if hourInt > 12 {
-            hourInt -= 12
-        }
-        
-        let angle: Float = Float((2*Double.pi)/12) * Float(hourInt)
-        return  angle + noonAngle
-    }
-    
-    private func compensationHourAngle() -> Float {
-        let components = getComponents(date:currentDate!)
-        var hourAngle: Float = calculateAngle(hour: components.hour!)
-        hourAngle += (Float(components.minute!)/60.0) * Float((2*Double.pi)/12)
-        return hourAngle
-    }
-    
-    private func compensationMinuteAngle() -> Float {
-        let components = getComponents(date:currentDate!)
-        var minuteAngle: Float = calculateAngle(minute: components.minute!)
-        minuteAngle += (Float(components.second!)/60.0) * Float((2*Double.pi)/60)
-        return minuteAngle
-    }
-    
-    private func adjustFont(rect: CGRect) -> UIFont {
-        let length: CGFloat = (rect.width > rect.height) ? rect.height : rect.width
-        let font = UIFont.systemFont(ofSize: length * 0.8)
-        return font
-    }
-    
-    private func getComponents(date: Date) -> DateComponents {
-        let components = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second],
-                                                 from: date)
-        return components
-    }
-    
     // MARK:- Draw Hand
     private func drawSecondHandLayer(angle: Float) {
         if secondHandImage != nil {
-            let rotation = angle - noonAngle
+            let rotation = angle - model.noonAngle
             secondHandImageView.transform = CGAffineTransform(rotationAngle: CGFloat(rotation))
             return
         }
@@ -391,7 +392,7 @@ public enum AMNCClockType {
     
     private func drawMinuteHandLayer(angle: Float) {
         if minuteHandImage != nil {
-            let rotation = angle - noonAngle
+            let rotation = angle - model.noonAngle
             minuteHandImageView.transform = CGAffineTransform(rotationAngle: CGFloat(rotation))
             return
         }
@@ -411,7 +412,7 @@ public enum AMNCClockType {
             minuteHandImageView.image = minuteHandImage
             hourHandImageView.image = hourHandImage
             secondHandImageView.image = secondHandImage
-            let rotation = angle - noonAngle
+            let rotation = angle - model.noonAngle
             hourHandImageView.transform = CGAffineTransform(rotationAngle: CGFloat(rotation))
             return
         }
@@ -426,18 +427,12 @@ public enum AMNCClockType {
     }
     
     private func drawClock() {
-        currentDate = Date()
-        guard let currentDate = currentDate else {
-            return
-        }
-        
-        let components = getComponents(date: currentDate)
-        drawSecondHandLayer(angle:calculateAngle(second: components.second!))
-        drawMinuteHandLayer(angle: compensationMinuteAngle())
-        drawHourHandLayer(angle: compensationHourAngle())
-        
-        dateFormatter.dateFormat = AMNCDateFormat.time.rawValue
-        selectedTimeLabel.text = dateFormatter.string(from: currentDate)
+        model.currentDate = Date()
+        let components = model.getComponents(date: model.currentDate)
+        drawSecondHandLayer(angle: model.calculateAngle(second: components.second!))
+        drawMinuteHandLayer(angle: model.compensationMinuteAngle())
+        drawHourHandLayer(angle: model.compensationHourAngle())
+        selectedTimeLabel.text = model.formattedTime(.time)
     }
     
     // MARK:- Timer Action
@@ -498,8 +493,8 @@ public enum AMNCClockType {
         
         prepareSelectedTimeLabel()
         
-        if timer == nil {
-            timer = Timer.scheduledTimer(timeInterval: 0.5,
+        if model.timer == nil {
+            model.timer = Timer.scheduledTimer(timeInterval: 0.5,
                                          target: self,
                                          selector: #selector(self.timerAction(teimer:)),
                                          userInfo: nil,
