@@ -33,71 +33,55 @@ public enum AMNCClockType {
 
 private class AMNowClockModel {
     
-    enum AMNCDateFormat: String {
-        case hour = "HH"
-        case minute = "mm"
-        case time = "HH:mm"
-    }
-    
     let noonAngle = Float(Double.pi/2 + Double.pi)
+    
     var calendar = Calendar(identifier: .gregorian)
     var currentDate = Date()
-    var timer: Timer?
-    private let dateFormatter: DateFormatter = {
-        var df = DateFormatter()
-        df.locale = Locale(identifier: "ja_JP")
-        return df
-    }()
-    
-    func formattedTime(_ format: AMNCDateFormat) -> String {
-        dateFormatter.dateFormat = format.rawValue
+    var currentSecondAngle: Float {
+        return anglePerSecond * currentSecond + noonAngle
+    }
+    var currentHourAngle: Float {
+        let hour = currentHour > 12 ? currentHour - 12 : currentHour
+        let hourAngle = anglePerHour * hour + noonAngle
+        /// revise by minute
+        return hourAngle + (currentMinute / 60.0) * anglePerHour
+    }
+    var currentMinuteAngle: Float {
+        let minuteAngle = anglePerMinute * currentMinute + noonAngle
+        /// revise by second
+        return minuteAngle + (currentSecond / 60.0) * anglePerMinute
+    }
+    var formattedTime: String {
         return dateFormatter.string(from: currentDate)
     }
     
-    // MARK:- Calculate
-    func calculateAngle(second: Int) -> Float {
-        let angle: Float = Float((2*Double.pi)/60) * Float(second)
-        return  angle + noonAngle
-    }
+    private let anglePerSecond = Float((2 * Double.pi) / 60)
+    private let anglePerMinute = Float((2 * Double.pi) / 60)
+    private let anglePerHour = Float((2 * Double.pi) / 12)
+    private let dateFormatter: DateFormatter = {
+        var df = DateFormatter()
+        df.locale = Locale(identifier: "ja_JP")
+        df.dateFormat = "HH:mm"
+        return df
+    }()
     
-    func calculateAngle(minute: Int) -> Float {
-        let angle: Float = Float((2*Double.pi)/60) * Float(minute)
-        return  angle + noonAngle
+    private var currentHour: Float {
+        return Float(currentComponents.hour!)
     }
-    
-    func calculateAngle(hour:Int) -> Float {
-        var hourInt = hour
-        if hourInt > 12 {
-            hourInt -= 12
-        }
-        
-        let angle: Float = Float((2*Double.pi)/12) * Float(hourInt)
-        return  angle + noonAngle
+    private var currentMinute: Float {
+        return Float(currentComponents.minute!)
     }
-    
-    func compensationHourAngle() -> Float {
-        let components = getComponents(date: currentDate)
-        var hourAngle: Float = calculateAngle(hour: components.hour!)
-        hourAngle += (Float(components.minute!)/60.0) * Float((2*Double.pi)/12)
-        return hourAngle
+    private var currentSecond: Float {
+        return Float(currentComponents.second!)
     }
-    
-    func compensationMinuteAngle() -> Float {
-        let components = getComponents(date: currentDate)
-        var minuteAngle: Float = calculateAngle(minute: components.minute!)
-        minuteAngle += (Float(components.second!)/60.0) * Float((2*Double.pi)/60)
-        return minuteAngle
+    private var currentComponents: DateComponents {
+        return calendar.dateComponents([.year, .month, .day, .hour, .minute, .second],
+                                       from: currentDate)
     }
     
     func adjustFont(rect: CGRect) -> UIFont {
         let length = (rect.width > rect.height) ? rect.height : rect.width
         return .systemFont(ofSize: length * 0.8)
-    }
-    
-    func getComponents(date: Date) -> DateComponents {
-        let components = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second],
-                                                 from: date)
-        return components
     }
 }
 
@@ -161,6 +145,7 @@ private class AMNowClockModel {
     private var hourHandLayer: CAShapeLayer?
     private var minuteHandLayer: CAShapeLayer?
     private var secondHandLayer: CAShapeLayer?
+    private var timer: Timer?
     private var radius: CGFloat {
         return clockView.frame.width/2
     }
@@ -428,11 +413,10 @@ private class AMNowClockModel {
     
     private func drawClock() {
         model.currentDate = Date()
-        let components = model.getComponents(date: model.currentDate)
-        drawSecondHandLayer(angle: model.calculateAngle(second: components.second!))
-        drawMinuteHandLayer(angle: model.compensationMinuteAngle())
-        drawHourHandLayer(angle: model.compensationHourAngle())
-        selectedTimeLabel.text = model.formattedTime(.time)
+        drawSecondHandLayer(angle: model.currentSecondAngle)
+        drawMinuteHandLayer(angle: model.currentMinuteAngle)
+        drawHourHandLayer(angle: model.currentHourAngle)
+        selectedTimeLabel.text = model.formattedTime
     }
     
     // MARK:- Timer Action
@@ -493,8 +477,8 @@ private class AMNowClockModel {
         
         prepareSelectedTimeLabel()
         
-        if model.timer == nil {
-            model.timer = Timer.scheduledTimer(timeInterval: 0.5,
+        if timer == nil {
+            timer = Timer.scheduledTimer(timeInterval: 0.5,
                                          target: self,
                                          selector: #selector(self.timerAction(teimer:)),
                                          userInfo: nil,
