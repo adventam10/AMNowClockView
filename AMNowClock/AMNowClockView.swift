@@ -35,7 +35,17 @@ private class AMNowClockModel {
     
     let noonAngle = Float(Double.pi/2 + Double.pi)
     
-    var calendar = Calendar(identifier: .gregorian)
+    var timeZone: TimeZone? {
+        didSet {
+            if let timeZone = timeZone {
+                calendar.timeZone = timeZone
+                dateFormatter.timeZone = timeZone
+            } else {
+                calendar.timeZone = .current
+                dateFormatter.timeZone = .current
+            }
+        }
+    }
     var currentDate = Date()
     var currentSecondAngle: Float {
         return anglePerSecond * currentSecond + noonAngle
@@ -58,9 +68,9 @@ private class AMNowClockModel {
     private let anglePerSecond = Float((2 * Double.pi) / 60)
     private let anglePerMinute = Float((2 * Double.pi) / 60)
     private let anglePerHour = Float((2 * Double.pi) / 12)
-    private let dateFormatter: DateFormatter = {
+    private var calendar = Calendar(identifier: .gregorian)
+    private var dateFormatter: DateFormatter = {
         var df = DateFormatter()
-        df.locale = Locale(identifier: "ja_JP")
         df.dateFormat = "HH:mm"
         return df
     }()
@@ -117,11 +127,7 @@ private class AMNowClockModel {
     /// default is TimeZone.current
     public var timeZone: TimeZone? {
         didSet {
-            if let timeZone = timeZone {
-                model.calendar.timeZone = timeZone
-            } else {
-                model.calendar.timeZone = TimeZone.current
-            }
+            model.timeZone = timeZone
         }
     }
     
@@ -133,7 +139,6 @@ private class AMNowClockModel {
     }
     
     private let model = AMNowClockModel()
-    private let clockSpace: CGFloat = 10
     private let clockView = UIView()
     private let clockImageView = UIImageView()
     private let minuteHandImageView = UIImageView()
@@ -183,12 +188,10 @@ private class AMNowClockModel {
     
     // MARK: - Prepare View
     private func prepareClockView() {
-        var length: CGFloat = (frame.width < frame.height) ? frame.width : frame.height
-        length -= clockSpace*2
+        let length = (frame.width < frame.height) ? frame.width : frame.height
         clockView.frame = CGRect(x: frame.width/2 - length/2,
                                  y: frame.height/2 - length/2,
-                                 width: length,
-                                 height: length)
+                                 width: length, height: length)
         addSubview(clockView)
     }
     

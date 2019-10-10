@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,130 +13,215 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="SampleAMNowClock" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NXo-wn-tWH" customClass="AMNowClockView" customModule="SampleAMNowClock" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="20" width="200" height="200"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="NXo-wn-tWH" secondAttribute="height" multiplier="1:1" id="8s3-lt-XLK"/>
-                                    <constraint firstAttribute="width" constant="200" id="X1x-HD-GxK"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="22G-b1-VJz" customClass="AMNowClockView" customModule="SampleAMNowClock" customModuleProvider="target">
-                                <rect key="frame" x="245" y="55" width="130" height="130"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="130" id="Ca1-yG-0Lp"/>
-                                    <constraint firstAttribute="width" secondItem="22G-b1-VJz" secondAttribute="height" multiplier="1:1" id="yx0-R5-OeA"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="clockBorderLineColor">
-                                        <color key="value" red="0.26274509800000001" green="0.62745098040000002" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="hourHandColor">
-                                        <color key="value" red="1" green="0.93333333330000001" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="minuteHandColor">
-                                        <color key="value" red="0.70588235290000001" green="0.3294117647" blue="0.23921568630000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedTimeLabelTextColor">
-                                        <color key="value" red="0.96470588239999999" green="0.96862745100000003" blue="0.98431372549999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="timeLabelTextColor">
-                                        <color key="value" red="0.96470588239999999" green="0.96862745100000003" blue="0.98431372549999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="smallClockIndexColor">
-                                        <color key="value" red="0.89019607840000003" green="0.98039215690000003" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="clockIndexColor">
-                                        <color key="value" red="0.70588235290000001" green="0.55294117649999996" blue="0.49803921569999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="clockColor">
-                                        <color key="value" red="0.15686274510000001" green="0.31764705879999999" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="secondHandColor">
-                                        <color key="value" red="1" green="0.80392156859999997" blue="0.82352941180000006" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kl0-7z-p8R" customClass="AMNowClockView" customModule="SampleAMNowClock" customModuleProvider="target">
-                                <rect key="frame" x="137.5" y="283.5" width="100" height="100"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="X33-pH-lI7"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="image" keyPath="clockImage" value="clock2.png"/>
-                                    <userDefinedRuntimeAttribute type="image" keyPath="minuteHandImage" value="minutehand2.png"/>
-                                    <userDefinedRuntimeAttribute type="image" keyPath="hourHandImage" value="hourhand2.png"/>
-                                    <userDefinedRuntimeAttribute type="image" keyPath="secondHandImage" value="secondhand2.png"/>
-                                </userDefinedRuntimeAttributes>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ns7-y0-aBr" customClass="AMNowClockView" customModule="SampleAMNowClock" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="278.5" width="110" height="110"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="110" id="juK-r3-f81"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="image" keyPath="minuteHandImage" value="m.png"/>
-                                    <userDefinedRuntimeAttribute type="image" keyPath="hourHandImage" value="h.png"/>
-                                    <userDefinedRuntimeAttribute type="image" keyPath="secondHandImage" value="s.png"/>
-                                </userDefinedRuntimeAttributes>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TmY-XS-39P" customClass="AMNowClockView" customModule="SampleAMNowClock" customModuleProvider="target">
-                                <rect key="frame" x="265" y="278.5" width="110" height="110"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="110" id="aWT-dk-gsx"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="clockBorderLineWidth">
-                                        <real key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="minuteHandWidth">
-                                        <real key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="hourHandWidth">
-                                        <real key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="secondHandWidth">
-                                        <real key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tIt-AV-vve" customClass="AMNowClockView" customModule="SampleAMNowClock" customModuleProvider="target">
-                                <rect key="frame" x="46" y="383.5" width="283.5" height="283.5"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="image" keyPath="clockImage" value="clock.png"/>
-                                    <userDefinedRuntimeAttribute type="image" keyPath="minuteHandImage" value="minutehand.png"/>
-                                    <userDefinedRuntimeAttribute type="image" keyPath="hourHandImage" value="hourhand.png"/>
-                                    <userDefinedRuntimeAttribute type="image" keyPath="secondHandImage" value="secondhand.png"/>
-                                </userDefinedRuntimeAttributes>
-                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="nw4-NW-jHW">
+                                <rect key="frame" x="17.666666666666657" y="52" width="340" height="708"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="aGk-YD-uIv">
+                                        <rect key="frame" x="0.0" y="0.0" width="340" height="212"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="CCh-Ol-mbZ">
+                                                <rect key="frame" x="0.0" y="0.0" width="194" height="212"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="America/Toronto" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jq9-gs-2B8">
+                                                        <rect key="frame" x="0.0" y="0.0" width="194" height="18"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NXo-wn-tWH" customClass="AMNowClockView" customModule="SampleAMNowClock" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="18" width="194" height="194"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="NXo-wn-tWH" secondAttribute="height" multiplier="1:1" id="8s3-lt-XLK"/>
+                                                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="200" id="X1x-HD-GxK"/>
+                                                        </constraints>
+                                                    </view>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="XPn-3i-TRs">
+                                                <rect key="frame" x="210" y="32" width="130" height="148"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Europe/Moscow" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LUn-7N-N0i">
+                                                        <rect key="frame" x="0.0" y="0.0" width="130" height="18"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="22G-b1-VJz" customClass="AMNowClockView" customModule="SampleAMNowClock" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="18" width="130" height="130"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="130" id="Ca1-yG-0Lp"/>
+                                                            <constraint firstAttribute="width" secondItem="22G-b1-VJz" secondAttribute="height" multiplier="1:1" id="yx0-R5-OeA"/>
+                                                        </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="clockBorderLineColor">
+                                                                <color key="value" red="0.26274509800000001" green="0.62745098040000002" blue="0.2784313725" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="hourHandColor">
+                                                                <color key="value" red="1" green="0.93333333330000001" blue="0.34509803919999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="minuteHandColor">
+                                                                <color key="value" red="0.70588235290000001" green="0.3294117647" blue="0.23921568630000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="selectedTimeLabelTextColor">
+                                                                <color key="value" red="0.96470588239999999" green="0.96862745100000003" blue="0.98431372549999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="timeLabelTextColor">
+                                                                <color key="value" red="0.96470588239999999" green="0.96862745100000003" blue="0.98431372549999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="smallClockIndexColor">
+                                                                <color key="value" red="0.89019607840000003" green="0.98039215690000003" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="clockIndexColor">
+                                                                <color key="value" red="0.70588235290000001" green="0.55294117649999996" blue="0.49803921569999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="clockColor">
+                                                                <color key="value" red="0.15686274510000001" green="0.31764705879999999" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="secondHandColor">
+                                                                <color key="value" red="1" green="0.80392156859999997" blue="0.82352941180000006" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="3N1-Li-SIu">
+                                        <rect key="frame" x="0.0" y="220" width="340" height="122"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="LcF-Tw-0nD">
+                                                <rect key="frame" x="0.0" y="0.0" width="104" height="122"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="GMT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UK9-XT-DQw">
+                                                        <rect key="frame" x="0.0" y="0.0" width="104" height="18"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ns7-y0-aBr" customClass="AMNowClockView" customModule="SampleAMNowClock" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="18" width="104" height="104"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" priority="750" constant="110" id="9sB-Td-Rtp"/>
+                                                            <constraint firstAttribute="width" secondItem="ns7-y0-aBr" secondAttribute="height" multiplier="1:1" id="TZa-GK-ZyP"/>
+                                                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="110" id="juK-r3-f81"/>
+                                                        </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="image" keyPath="minuteHandImage" value="m.png"/>
+                                                            <userDefinedRuntimeAttribute type="image" keyPath="hourHandImage" value="h.png"/>
+                                                            <userDefinedRuntimeAttribute type="image" keyPath="secondHandImage" value="s.png"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Syh-mI-hs5">
+                                                <rect key="frame" x="120" y="2" width="100" height="118"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Asia/Tokyo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0qE-QQ-Ffm">
+                                                        <rect key="frame" x="0.0" y="0.0" width="100" height="18"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kl0-7z-p8R" customClass="AMNowClockView" customModule="SampleAMNowClock" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="18" width="100" height="100"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" priority="750" constant="100" id="JqP-AD-yAW"/>
+                                                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="100" id="X33-pH-lI7"/>
+                                                        </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="image" keyPath="clockImage" value="clock2.png"/>
+                                                            <userDefinedRuntimeAttribute type="image" keyPath="minuteHandImage" value="minutehand2.png"/>
+                                                            <userDefinedRuntimeAttribute type="image" keyPath="hourHandImage" value="hourhand2.png"/>
+                                                            <userDefinedRuntimeAttribute type="image" keyPath="secondHandImage" value="secondhand2.png"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="Kl0-7z-p8R" firstAttribute="width" secondItem="Kl0-7z-p8R" secondAttribute="height" multiplier="1:1" id="e0K-yp-EKa"/>
+                                                </constraints>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="SYU-rv-cvo">
+                                                <rect key="frame" x="236" y="0.0" width="104" height="122"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Africa/Cairo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jOn-eQ-mef">
+                                                        <rect key="frame" x="0.0" y="0.0" width="104" height="18"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TmY-XS-39P" customClass="AMNowClockView" customModule="SampleAMNowClock" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="18" width="104" height="104"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="TmY-XS-39P" secondAttribute="height" multiplier="1:1" id="O9K-sy-xCt"/>
+                                                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="110" id="aWT-dk-gsx"/>
+                                                            <constraint firstAttribute="width" priority="750" constant="110" id="low-iM-gOQ"/>
+                                                        </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="clockBorderLineWidth">
+                                                                <real key="value" value="1"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="minuteHandWidth">
+                                                                <real key="value" value="1"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="hourHandWidth">
+                                                                <real key="value" value="1"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="secondHandWidth">
+                                                                <real key="value" value="1"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="Syh-mI-hs5" firstAttribute="centerY" secondItem="3N1-Li-SIu" secondAttribute="centerY" id="DQj-wG-jJ4"/>
+                                            <constraint firstItem="Syh-mI-hs5" firstAttribute="centerX" secondItem="3N1-Li-SIu" secondAttribute="centerX" id="NxS-N1-yfx"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="nuf-YM-zF5">
+                                        <rect key="frame" x="0.0" y="350" width="340" height="358"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Australia/Sydney" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pfV-jh-Mk7">
+                                                <rect key="frame" x="0.0" y="0.0" width="340" height="18"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tIt-AV-vve" customClass="AMNowClockView" customModule="SampleAMNowClock" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="18" width="340" height="340"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="tIt-AV-vve" secondAttribute="height" multiplier="1:1" id="A3s-wS-JAk"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="image" keyPath="clockImage" value="clock.png"/>
+                                                    <userDefinedRuntimeAttribute type="image" keyPath="minuteHandImage" value="minutehand.png"/>
+                                                    <userDefinedRuntimeAttribute type="image" keyPath="hourHandImage" value="hourhand.png"/>
+                                                    <userDefinedRuntimeAttribute type="image" keyPath="secondHandImage" value="secondhand.png"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Kl0-7z-p8R" firstAttribute="width" secondItem="Kl0-7z-p8R" secondAttribute="height" multiplier="1:1" id="0Wd-eV-V9G"/>
-                            <constraint firstItem="TmY-XS-39P" firstAttribute="centerY" secondItem="Kl0-7z-p8R" secondAttribute="centerY" id="52K-2p-dTw"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="tIt-AV-vve" secondAttribute="bottom" id="5df-9s-3DJ"/>
-                            <constraint firstItem="NXo-wn-tWH" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="6hk-2v-XXj"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="TmY-XS-39P" secondAttribute="trailing" id="Gkd-AI-WJd"/>
-                            <constraint firstItem="Kl0-7z-p8R" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="HFq-Mh-yX2"/>
-                            <constraint firstItem="tIt-AV-vve" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Irl-LF-NWT"/>
-                            <constraint firstItem="Kl0-7z-p8R" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="J2g-ee-mTo"/>
-                            <constraint firstItem="ns7-y0-aBr" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="LF4-CH-TcI"/>
-                            <constraint firstItem="tIt-AV-vve" firstAttribute="width" secondItem="tIt-AV-vve" secondAttribute="height" multiplier="1:1" id="Xrx-4Q-fjA"/>
-                            <constraint firstItem="ns7-y0-aBr" firstAttribute="width" secondItem="ns7-y0-aBr" secondAttribute="height" multiplier="1:1" id="ZC8-bi-GuX"/>
-                            <constraint firstItem="22G-b1-VJz" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="aro-BE-VnI"/>
-                            <constraint firstItem="ns7-y0-aBr" firstAttribute="centerY" secondItem="Kl0-7z-p8R" secondAttribute="centerY" id="bDV-jp-K2E"/>
-                            <constraint firstItem="TmY-XS-39P" firstAttribute="width" secondItem="TmY-XS-39P" secondAttribute="height" multiplier="1:1" id="dpb-bQ-Wi1"/>
-                            <constraint firstItem="tIt-AV-vve" firstAttribute="top" secondItem="Kl0-7z-p8R" secondAttribute="bottom" id="qQR-Qw-j0h"/>
-                            <constraint firstItem="22G-b1-VJz" firstAttribute="centerY" secondItem="NXo-wn-tWH" secondAttribute="centerY" id="qk8-8n-ffA"/>
-                            <constraint firstItem="NXo-wn-tWH" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="xDD-xh-nC2"/>
+                            <constraint firstItem="nw4-NW-jHW" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="7ke-aa-B2R"/>
+                            <constraint firstItem="nw4-NW-jHW" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="7tY-p3-1Kl"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="nw4-NW-jHW" secondAttribute="trailing" constant="8" id="ACH-S0-OVu"/>
+                            <constraint firstItem="nw4-NW-jHW" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="RDA-IY-V2Z"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="nw4-NW-jHW" secondAttribute="bottom" constant="8" id="TLW-FG-Bqo"/>
+                            <constraint firstItem="nw4-NW-jHW" firstAttribute="top" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="8" id="hpS-fw-aaq"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -153,6 +236,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="138" y="134"/>
         </scene>
     </scenes>
     <resources>

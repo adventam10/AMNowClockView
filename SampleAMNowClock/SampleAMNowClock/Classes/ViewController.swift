@@ -19,13 +19,13 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        cView1.timeZone = TimeZone(identifier: "GMT")
-        cView2.timeZone = TimeZone(identifier: "Asia/Tokyo")
-        cView3.timeZone = TimeZone(identifier: "Australia/Sydney")
-        cView4.timeZone = TimeZone(identifier: "Europe/Moscow")
-        cView5.timeZone = TimeZone(identifier: "America/Toronto")
-        cView6.timeZone = TimeZone(identifier: "Africa/Cairo")
-        TimeZone.knownTimeZoneIdentifiers.forEach{print("\($0)\n")}
+        cView1.timeZone = TimeZone(identifier: "America/Toronto")
+        cView2.timeZone = TimeZone(identifier: "Europe/Moscow")
+        cView3.timeZone = TimeZone(identifier: "Asia/Tokyo")
+        cView4.timeZone = TimeZone(identifier: "GMT")
+        cView5.timeZone = TimeZone(identifier: "Africa/Cairo")
+        cView6.timeZone = TimeZone(identifier: "Australia/Sydney")
+        TimeZone.knownTimeZoneIdentifiers.forEach { print("\($0)\n") }
     }
 
     override func didReceiveMemoryWarning() {
