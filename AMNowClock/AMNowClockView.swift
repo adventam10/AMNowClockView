@@ -31,7 +31,7 @@ public enum AMNCClockType {
     }
 }
 
-private class AMNowClockModel {
+internal class AMNowClockModel {
     
     let noonAngle = Float(Double.pi/2 + Double.pi)
     
@@ -226,8 +226,8 @@ private class AMNowClockModel {
     
     private func prepareTimeLabel() {
         var angle = model.noonAngle
-        var smallRadius: CGFloat = radius - (radius/10 + clockBorderLineWidth)
-        let length: CGFloat = radius/4
+        var smallRadius = radius - (radius/10 + clockBorderLineWidth)
+        let length = radius/4
         smallRadius -= length/2
         
         // draw line (from center to out)

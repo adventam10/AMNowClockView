@@ -24,7 +24,18 @@
 		0E9A084120013B0C00DD65DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E9A083F20013B0C00DD65DB /* Main.storyboard */; };
 		0E9A084320013B0C00DD65DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E9A084220013B0C00DD65DB /* Assets.xcassets */; };
 		0E9A084620013B0C00DD65DB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E9A084420013B0C00DD65DB /* LaunchScreen.storyboard */; };
+		0EDDDE97234F3A1900A8E0F4 /* SampleAMNowClockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDDDE96234F3A1900A8E0F4 /* SampleAMNowClockTests.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0EDDDE99234F3A1900A8E0F4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0E9A083020013B0C00DD65DB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0E9A083720013B0C00DD65DB;
+			remoteInfo = SampleAMNowClock;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		0E4752B5201EDDC7002EA382 /* clock2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock2@2x.png"; sourceTree = "<group>"; };
@@ -46,10 +57,20 @@
 		0E9A084220013B0C00DD65DB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0E9A084520013B0C00DD65DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0E9A084720013B0C00DD65DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0EDDDE94234F3A1900A8E0F4 /* SampleAMNowClockTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SampleAMNowClockTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0EDDDE96234F3A1900A8E0F4 /* SampleAMNowClockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleAMNowClockTests.swift; sourceTree = "<group>"; };
+		0EDDDE98234F3A1900A8E0F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		0E9A083520013B0C00DD65DB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0EDDDE91234F3A1900A8E0F4 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -100,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				0E9A083A20013B0C00DD65DB /* SampleAMNowClock */,
+				0EDDDE95234F3A1900A8E0F4 /* SampleAMNowClockTests */,
 				0E9A083920013B0C00DD65DB /* Products */,
 			);
 			sourceTree = "<group>";
@@ -108,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				0E9A083820013B0C00DD65DB /* SampleAMNowClock.app */,
+				0EDDDE94234F3A1900A8E0F4 /* SampleAMNowClockTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -123,6 +146,15 @@
 				0E9A084720013B0C00DD65DB /* Info.plist */,
 			);
 			path = SampleAMNowClock;
+			sourceTree = "<group>";
+		};
+		0EDDDE95234F3A1900A8E0F4 /* SampleAMNowClockTests */ = {
+			isa = PBXGroup;
+			children = (
+				0EDDDE96234F3A1900A8E0F4 /* SampleAMNowClockTests.swift */,
+				0EDDDE98234F3A1900A8E0F4 /* Info.plist */,
+			);
+			path = SampleAMNowClockTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -145,13 +177,31 @@
 			productReference = 0E9A083820013B0C00DD65DB /* SampleAMNowClock.app */;
 			productType = "com.apple.product-type.application";
 		};
+		0EDDDE93234F3A1900A8E0F4 /* SampleAMNowClockTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0EDDDE9D234F3A1900A8E0F4 /* Build configuration list for PBXNativeTarget "SampleAMNowClockTests" */;
+			buildPhases = (
+				0EDDDE90234F3A1900A8E0F4 /* Sources */,
+				0EDDDE91234F3A1900A8E0F4 /* Frameworks */,
+				0EDDDE92234F3A1900A8E0F4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0EDDDE9A234F3A1900A8E0F4 /* PBXTargetDependency */,
+			);
+			name = SampleAMNowClockTests;
+			productName = SampleAMNowClockTests;
+			productReference = 0EDDDE94234F3A1900A8E0F4 /* SampleAMNowClockTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		0E9A083020013B0C00DD65DB /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0920;
+				LastSwiftUpdateCheck = 1100;
 				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = am10;
 				TargetAttributes = {
@@ -159,6 +209,11 @@
 						CreatedOnToolsVersion = 9.2;
 						LastSwiftMigration = 1020;
 						ProvisioningStyle = Manual;
+					};
+					0EDDDE93234F3A1900A8E0F4 = {
+						CreatedOnToolsVersion = 11.0;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 0E9A083720013B0C00DD65DB;
 					};
 				};
 			};
@@ -176,6 +231,7 @@
 			projectRoot = "";
 			targets = (
 				0E9A083720013B0C00DD65DB /* SampleAMNowClock */,
+				0EDDDE93234F3A1900A8E0F4 /* SampleAMNowClockTests */,
 			);
 		};
 /* End PBXProject section */
@@ -202,6 +258,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		0EDDDE92234F3A1900A8E0F4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -215,7 +278,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		0EDDDE90234F3A1900A8E0F4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0EDDDE97234F3A1900A8E0F4 /* SampleAMNowClockTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0EDDDE9A234F3A1900A8E0F4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0E9A083720013B0C00DD65DB /* SampleAMNowClock */;
+			targetProxy = 0EDDDE99234F3A1900A8E0F4 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		0E9A083F20013B0C00DD65DB /* Main.storyboard */ = {
@@ -382,6 +461,45 @@
 			};
 			name = Release;
 		};
+		0EDDDE9B234F3A1900A8E0F4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = H5QW7TLM9U;
+				INFOPLIST_FILE = SampleAMNowClockTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = am10.SampleAMNowClockTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SampleAMNowClock.app/SampleAMNowClock";
+			};
+			name = Debug;
+		};
+		0EDDDE9C234F3A1900A8E0F4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = H5QW7TLM9U;
+				INFOPLIST_FILE = SampleAMNowClockTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = am10.SampleAMNowClockTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SampleAMNowClock.app/SampleAMNowClock";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -399,6 +517,15 @@
 			buildConfigurations = (
 				0E9A084B20013B0C00DD65DB /* Debug */,
 				0E9A084C20013B0C00DD65DB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0EDDDE9D234F3A1900A8E0F4 /* Build configuration list for PBXNativeTarget "SampleAMNowClockTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0EDDDE9B234F3A1900A8E0F4 /* Debug */,
+				0EDDDE9C234F3A1900A8E0F4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
