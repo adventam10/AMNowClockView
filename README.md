@@ -9,7 +9,7 @@
 
 ## Demo
 
-![amnowclock](https://user-images.githubusercontent.com/34936885/34642298-1594ee86-f354-11e7-85a6-39d97bf96785.gif)
+![now_clock](https://user-images.githubusercontent.com/34936885/66577283-0e6a5100-ebb4-11e9-8fce-7fb8564fb7ba.gif)
 
 ## Usage
 
