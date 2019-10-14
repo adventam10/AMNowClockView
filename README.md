@@ -4,6 +4,7 @@
 ![Pod License](https://img.shields.io/cocoapods/l/AMNowClockView.svg?style=flat)
 [![Pod Version](https://img.shields.io/cocoapods/v/AMNowClockView.svg?style=flat)](http://cocoapods.org/pods/AMNowClockView)
 [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+[![Swift Package Manager compatible](https://img.shields.io/badge/Swift%20Package%20Manager-compatible-brightgreen.svg)](https://github.com/apple/swift-package-manager)
 
 `AMNowClockView` is a view can display current time.
 
@@ -63,6 +64,7 @@ clockView.timeZone = TimeZone(identifier: "GMT")
 ### CocoaPods
 
 Add this to your Podfile.
+
 ```ogdl
 pod 'AMNowClockView'
 ```
