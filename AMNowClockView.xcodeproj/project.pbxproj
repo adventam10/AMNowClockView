@@ -8,14 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		0E4752AB201EDC79002EA382 /* AMNowClockView.h in Headers */ = {isa = PBXBuildFile; fileRef = 0E4752A9201EDC79002EA382 /* AMNowClockView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0E4752B3201EDD4C002EA382 /* AMNowClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4752B2201EDD4C002EA382 /* AMNowClockView.swift */; };
+		0EB234C62354897700442A85 /* AMNowClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB234C52354897700442A85 /* AMNowClockView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0E4752A6201EDC79002EA382 /* AMNowClockView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AMNowClockView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E4752A9201EDC79002EA382 /* AMNowClockView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AMNowClockView.h; sourceTree = "<group>"; };
 		0E4752AA201EDC79002EA382 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0E4752B2201EDD4C002EA382 /* AMNowClockView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AMNowClockView.swift; sourceTree = "<group>"; };
+		0EB234C52354897700442A85 /* AMNowClockView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AMNowClockView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,7 +32,7 @@
 		0E47529C201EDC79002EA382 = {
 			isa = PBXGroup;
 			children = (
-				0E4752B1201EDD4C002EA382 /* AMNowClock */,
+				0EB234C42354897700442A85 /* Source */,
 				0E4752A8201EDC79002EA382 /* AMNowClockView */,
 				0E4752A7201EDC79002EA382 /* Products */,
 			);
@@ -55,12 +55,12 @@
 			path = AMNowClockView;
 			sourceTree = "<group>";
 		};
-		0E4752B1201EDD4C002EA382 /* AMNowClock */ = {
+		0EB234C42354897700442A85 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				0E4752B2201EDD4C002EA382 /* AMNowClockView.swift */,
+				0EB234C52354897700442A85 /* AMNowClockView.swift */,
 			);
-			path = AMNowClock;
+			path = Source;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -144,7 +144,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0E4752B3201EDD4C002EA382 /* AMNowClockView.swift in Sources */,
+				0EB234C62354897700442A85 /* AMNowClockView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

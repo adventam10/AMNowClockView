@@ -20,10 +20,10 @@
 		0E4752CD201EDDC7002EA382 /* secondhand@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0E4752BF201EDDC7002EA382 /* secondhand@2x.png */; };
 		0E4752CE201EDDC7002EA382 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4752C1201EDDC7002EA382 /* AppDelegate.swift */; };
 		0E4752CF201EDDC7002EA382 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4752C2201EDDC7002EA382 /* ViewController.swift */; };
-		0E4752D2201EDE08002EA382 /* AMNowClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4752D1201EDE08002EA382 /* AMNowClockView.swift */; };
 		0E9A084120013B0C00DD65DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E9A083F20013B0C00DD65DB /* Main.storyboard */; };
 		0E9A084320013B0C00DD65DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E9A084220013B0C00DD65DB /* Assets.xcassets */; };
 		0E9A084620013B0C00DD65DB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E9A084420013B0C00DD65DB /* LaunchScreen.storyboard */; };
+		0EB234C92354899600442A85 /* AMNowClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB234C82354899600442A85 /* AMNowClockView.swift */; };
 		0EDDDE97234F3A1900A8E0F4 /* SampleAMNowClockTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDDDE96234F3A1900A8E0F4 /* SampleAMNowClockTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -51,12 +51,12 @@
 		0E4752BF201EDDC7002EA382 /* secondhand@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "secondhand@2x.png"; sourceTree = "<group>"; };
 		0E4752C1201EDDC7002EA382 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0E4752C2201EDDC7002EA382 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		0E4752D1201EDE08002EA382 /* AMNowClockView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AMNowClockView.swift; sourceTree = "<group>"; };
 		0E9A083820013B0C00DD65DB /* SampleAMNowClock.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SampleAMNowClock.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E9A084020013B0C00DD65DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0E9A084220013B0C00DD65DB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0E9A084520013B0C00DD65DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0E9A084720013B0C00DD65DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0EB234C82354899600442A85 /* AMNowClockView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AMNowClockView.swift; sourceTree = "<group>"; };
 		0EDDDE94234F3A1900A8E0F4 /* SampleAMNowClockTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SampleAMNowClockTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0EDDDE96234F3A1900A8E0F4 /* SampleAMNowClockTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleAMNowClockTests.swift; sourceTree = "<group>"; };
 		0EDDDE98234F3A1900A8E0F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -101,20 +101,11 @@
 		0E4752C0201EDDC7002EA382 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				0E4752D0201EDE08002EA382 /* AMNowClock */,
+				0EB234C72354899600442A85 /* Source */,
 				0E4752C1201EDDC7002EA382 /* AppDelegate.swift */,
 				0E4752C2201EDDC7002EA382 /* ViewController.swift */,
 			);
 			path = Classes;
-			sourceTree = "<group>";
-		};
-		0E4752D0201EDE08002EA382 /* AMNowClock */ = {
-			isa = PBXGroup;
-			children = (
-				0E4752D1201EDE08002EA382 /* AMNowClockView.swift */,
-			);
-			name = AMNowClock;
-			path = ../../../AMNowClock;
 			sourceTree = "<group>";
 		};
 		0E9A082F20013B0C00DD65DB = {
@@ -146,6 +137,15 @@
 				0E9A084720013B0C00DD65DB /* Info.plist */,
 			);
 			path = SampleAMNowClock;
+			sourceTree = "<group>";
+		};
+		0EB234C72354899600442A85 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				0EB234C82354899600442A85 /* AMNowClockView.swift */,
+			);
+			name = Source;
+			path = ../../../Source;
 			sourceTree = "<group>";
 		};
 		0EDDDE95234F3A1900A8E0F4 /* SampleAMNowClockTests */ = {
@@ -273,7 +273,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0E4752CF201EDDC7002EA382 /* ViewController.swift in Sources */,
-				0E4752D2201EDE08002EA382 /* AMNowClockView.swift in Sources */,
+				0EB234C92354899600442A85 /* AMNowClockView.swift in Sources */,
 				0E4752CE201EDDC7002EA382 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
